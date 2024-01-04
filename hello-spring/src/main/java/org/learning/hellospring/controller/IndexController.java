@@ -11,11 +11,11 @@ import java.util.Random;
 @RequestMapping("/")
 public class IndexController {
     @GetMapping
-    public String index(@RequestParam String name, Model model){
+    public String index(@RequestParam(name = "dice") int dado,Model model){
         Random random=new Random();
-        int value=random.nextInt();
+        int value=random.nextInt(1,7);
         model.addAttribute("randomValue",value);
-        model.addAttribute("userName", name);
+        model.addAttribute("valoreDado",dado);
         return "home";
     }
 }
